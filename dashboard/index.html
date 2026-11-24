@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Token Radar</title>
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">◎</span><div><p class="eyebrow">ONCHAIN RESEARCH / 01</p><h1>Token Radar</h1></div></div>
+    <div class="asof">Snapshot <strong id="as-of">—</strong><span class="live-dot"></span><span id="model-version">radar-2</span></div>
+  </header>
+  <main>
+    <section class="intro"><div><p class="eyebrow">SIGNAL OVER NOISE</p><h2>Find the next launch<br><em>before the ticker.</em></h2><p class="lede">A measured view of protocols whose records carry no token, with an explicit value model and a practical route to explore each one.</p></div>
+      <div class="stats"><div><span>PROTOCOLS</span><b id="protocol-count">—</b></div><div><span>WATCHLIST</span><b id="watch-count">—</b></div><div><span>RANKED</span><b id="row-count">—</b></div></div></section>
+    <section class="board card">
+      <div class="section-head"><div><p class="eyebrow">THE RADAR</p><h2>Protocol board</h2></div><div class="view-toggle"><button class="active" data-view="board">Pre-token board</button><button data-view="live">Live tokens</button></div></div>
+      <div class="controls"><label class="search"><span>⌕</span><input id="search" placeholder="Search name or slug" autocomplete="off"></label><select id="category"><option value="">All categories</option></select><select id="chain"><option value="">All chains</option></select><select id="min-tvl"><option value="0">Any TVL</option><option value="50000000">$50M+</option><option value="100000000">$100M+</option><option value="500000000">$500M+</option><option value="1000000000">$1B+</option></select><select id="sort"><option value="rank">Sort: radar rank</option><option value="value">Sort: implied value</option><option value="tvl">Sort: TVL</option><option value="growth">Sort: 7d growth</option><option value="age">Sort: age</option></select></div>
+      <div class="table-wrap"><table><thead id="table-head"></thead><tbody id="table-body"></tbody></table></div><div class="table-foot"><span id="result-count">—</span><span>Values shown in USD</span></div>
+    </section>
+    <section id="detail" class="detail card hidden"></section>
+    <section class="model card"><div class="section-head"><div><p class="eyebrow">HOW THE ESTIMATE WORKS</p><h2>One model, fitted to this snapshot</h2></div><span class="model-tag">MODEL <b id="model-label">radar-2</b></span></div>
+      <p class="model-copy">Implied value = TVL × category base multiple × growth × maturity × chain breadth. The base multiple is the median market-cap-to-TVL ratio among live tokens in that category when at least five samples exist; otherwise it uses the snapshot-wide live-token median. Multiples are bounded from 0.05× to 2.00×.</p>
+      <div class="factor-grid"><div><b>Growth</b><span>1 + weekly change clamped to −60%…120%, weighted by 0.5</span></div><div><b>Maturity</b><span>0.6 + age scaled to 1,095 days × 0.4</span></div><div><b>Breadth</b><span>3% per additional chain, up to four</span></div></div>
+      <div class="multiple-head"><h3>Fitted category multiples</h3><span>Live-token sample calibration</span></div><div class="table-wrap small"><table><thead><tr><th>Category</th><th>Base multiple</th><th>Sample size</th></tr></thead><tbody id="multiples"></tbody></table></div><p class="global-multiple">Snapshot-wide global multiple <strong id="global-multiple">—</strong></p>
+    </section>
+  </main>
+  <footer><span>DefiLlama protocols snapshot · <span id="footer-date">—</span></span><span>Implied values are this entry’s own estimates, not make.fun’s.</span></footer>
+  <script src="../data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
